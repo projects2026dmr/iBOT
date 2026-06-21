@@ -1,77 +1,76 @@
 import { useParams, Link } from "react-router-dom";
-import { WOJEWODZTWA_PLACEHOLDERS } from "@/data/placeholders";
+import SEOHead from "@/components/SEOHead";
+import Breadcrumb from "@/components/Breadcrumb";
+
+import {
+  getWojewodztwoBySlug,
+  getPowiatyByWojewodztwo,
+  getWojSeoTitle,
+  getWojSeoDescription,
+  getWojBreadcrumb
+} from "@/data/poland";
 
 export default function WojewodztwoPage() {
-  const { wojSlug } = useParams<{ wojSlug: string }>();
+  const { wojSlug } = useParams();
 
-  const woj = WOJEWODZTWA_PLACEHOLDERS.find((w) => w.slug === wojSlug);
+  if (!wojSlug) {
+    return <div className="container mx-auto px-4 py-10">Brak danych.</div>;
+  }
+
+  const woj = getWojewodztwoBySlug(wojSlug);
 
   if (!woj) {
     return (
-      <div className="container mx-auto px-4 py-20 text-center">
-        <h1 className="text-3xl font-bold text-slate-900">
-          Województwo nie znalezione
-        </h1>
-        <p className="mt-4 text-slate-600">
-          Nie znaleźliśmy województwa o podanym adresie.
-        </p>
-        <Link
-          to="/"
-          className="mt-8 inline-flex items-center rounded-xl bg-indigo-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-indigo-700"
-        >
-          ← Wróć na stronę główną
-        </Link>
+      <div className="container mx-auto px-4 py-10">
+        <h1 className="text-2xl font-bold mb-4">Nie znaleziono województwa</h1>
+        <p className="text-slate-600">Sprawdź poprawność adresu URL.</p>
       </div>
     );
   }
 
+  const powiaty = getPowiatyByWojewodztwo(woj.slug);
+  const breadcrumb = getWojBreadcrumb(woj);
+
   return (
-    <div className="min-h-[60vh]">
-      {/* Breadcrumbs */}
-      <div className="border-b border-slate-200 bg-slate-50">
-        <div className="container mx-auto px-4 py-3">
-          <nav className="flex items-center gap-2 text-sm text-slate-500">
-            <Link to="/" className="hover:text-indigo-600 transition-colors">
-              Strona główna
-            </Link>
-            <span>/</span>
-            <span className="font-medium text-slate-900">{woj.name}</span>
-          </nav>
-        </div>
+    <div className="container mx-auto px-4 py-10">
+      {/* SEO */}
+      <SEOHead
+        title={getWojSeoTitle(woj)}
+        description={getWojSeoDescription(woj)}
+        canonicalPath={`/wojewodztwo/${woj.slug}`}
+        ogType="website"
+      />
+
+      {/* Breadcrumb */}
+      <Breadcrumb items={breadcrumb} />
+
+      {/* Page Title */}
+      <h1 className="text-3xl font-bold text-slate-900 mb-4">
+        SEO w województwie {woj.name}
+      </h1>
+
+      <p className="text-slate-600 mb-8 max-w-2xl leading-relaxed">
+        Sprawdź powiaty w województwie {woj.name} i wybierz lokalizację, aby
+        zobaczyć szczegółowe informacje dotyczące pozycjonowania lokalnego,
+        widoczności w Google oraz możliwości rozwoju Twojej firmy.
+      </p>
+
+      {/* Powiat List */}
+      <h2 className="text-xl font-semibold text-slate-800 mb-3">
+        Powiaty w województwie {woj.name}
+      </h2>
+
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+        {powiaty.map((p) => (
+          <Link
+            key={p.slug}
+            to={`/powiat/${p.slug}`}
+            className="block rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 hover:border-indigo-400 hover:text-indigo-600 transition-colors"
+          >
+            {p.name}
+          </Link>
+        ))}
       </div>
-
-      <section className="py-16 md:py-24">
-        <div className="container mx-auto px-4">
-          <div className="mx-auto max-w-3xl text-center">
-            <span className="mb-4 inline-block text-sm font-semibold uppercase tracking-wider text-indigo-600">
-              Województwo
-            </span>
-            <h1 className="text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl md:text-5xl">
-              SEO w województwie {woj.name}
-            </h1>
-            <p className="mt-6 text-lg text-slate-600">
-              Poznaj nasze usługi SEO dostępne w województwie {woj.name}.
-              Pomagamy lokalnym firmom zdobywać klientów w ich regionie.
-            </p>
-
-            <div className="mt-12 rounded-2xl border border-slate-200 bg-slate-50 p-10">
-              <p className="text-sm text-slate-500">
-                🚧 Ta strona jest w trakcie budowy. Wkrótce pojawią się tu
-                szczegółowe informacje o usługach SEO w województwie{" "}
-                <strong>{woj.name}</strong>, lista powiatów oraz powiązanych
-                gmin.
-              </p>
-            </div>
-
-            <Link
-              to="/"
-              className="mt-8 inline-flex items-center rounded-xl bg-indigo-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-indigo-700"
-            >
-              ← Wróć na stronę główną
-            </Link>
-          </div>
-        </div>
-      </section>
     </div>
   );
 }
