@@ -159,7 +159,7 @@ export default function Footer() {
             SEO w województwach
           </h3>
           <div className="grid grid-cols-2 gap-x-3 gap-y-1.5 sm:grid-cols-4 sm:gap-x-4 sm:gap-y-2 md:grid-cols-8">
-            {WOJEWODZTWA_PLACEHOLDERS.map((woj) => (
+            {wojewodztwa.map((woj) => (
               <Link
                 key={woj.slug}
                 to={`/wojewodztwo/${woj.slug}`}
