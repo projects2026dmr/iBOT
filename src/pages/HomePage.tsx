@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { WOJEWODZTWA_PLACEHOLDERS } from "@/data/placeholders";
 import SEOHead from "@/components/SEOHead";
+import wojewodztwa from "@/data/wojewodztwa.json";
 
 /** Smooth-scroll to an element by ID. Used by all in-page CTAs. */
 function scrollToSection(id: string) {
