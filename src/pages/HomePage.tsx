@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { WOJEWODZTWA_PLACEHOLDERS } from "@/data/placeholders";
 import SEOHead from "@/components/SEOHead";
-import JsonLd from "@/components/JsonLd";
 
 /** Smooth-scroll to an element by ID. Used by all in-page CTAs. */
 function scrollToSection(id: string) {
@@ -1100,12 +1099,6 @@ export default function HomePage() {
         title="iBOT — Agencja SEO | Lokalne SEO w całej Polsce"
         description="Agencja SEO specjalizująca się w pozycjonowaniu lokalnym. Obsługujemy 16 województw, 380 powiatów i 2478 gmin. Bezpłatna konsultacja SEO."
         canonicalPath="/"
-      />
-      <JsonLd
-        type="home"
-        canonicalUrl="https://ibot.pl/"
-        name="iBOT - Agencja SEO"
-        description="Agencja SEO specjalizująca się w pozycjonowaniu lokalnym."
       />
 
       <HeroSection />
