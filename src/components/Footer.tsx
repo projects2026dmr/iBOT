@@ -68,8 +68,7 @@ export default function Footer() {
             </button>
             <p className="max-w-xs text-sm leading-relaxed text-slate-400">
               Pomagamy firmom w całej Polsce zdobywać klientów dzięki
-              skutecznemu lokalnemu SEO. Działamy w każdym województwie, powiecie
-              i gminie.
+              skutecznemu lokalnemu SEO. Działamy w każdym województwie i powiecie w Polsce.
             </p>
             {/* Social Links */}
             <div className="flex items-center gap-3 pt-2">
@@ -180,7 +179,7 @@ export default function Footer() {
               © {year} iBOT Agencja SEO. Wszelkie prawa zastrzeżone.
             </p>
             <p className="text-xs text-slate-600">
-              Obsługujemy 16 województw · 380 powiatów · 2478 gmin
+              Obsługujemy 16 województw · 380 powiatów
             </p>
           </div>
         </div>
