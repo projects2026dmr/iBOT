@@ -222,12 +222,9 @@ export default function PowiatPage() {
           Oferujemy profesjonalne pozycjonowanie lokalne w powiecie {powiat.name}.
           Skontaktuj się z nami i otrzymaj darmową analizę SEO.
         </p>
-        <a
-          href="/#kontakt"
-          className="inline-block bg-white text-indigo-700 font-semibold px-8 py-4 rounded-xl shadow hover:bg-slate-100 transition"
-        >
-          Darmowa konsultacja SEO
-        </a>
+<a href="/#/kontakt">
+  Darmowa konsultacja SEO
+</a>
       </section>
     </div>
   );
