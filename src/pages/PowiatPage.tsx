@@ -38,38 +38,75 @@ export default function PowiatPage() {
   /* -------------------------------------------------------
      JSON-LD — WebPage + Local SEO context
   ------------------------------------------------------- */
-  useEffect(() => {
-    const jsonLd = {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      name: `SEO w powiecie ${powiat.name}`,
-      description: getPowiatSeoDescription(powiat),
-      url: `${window.location.origin}/powiat/${powiat.slug}`,
-      breadcrumb: {
-        "@type": "BreadcrumbList",
-        itemListElement: breadcrumb.map((item, index) => ({
-          "@type": "ListItem",
-          position: index + 1,
-          name: item.label,
-          item: `${window.location.origin}${item.href}`
-        }))
+useEffect(() => {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": `SEO w powiecie ${powiat.name}`,
+    "description": getPowiatSeoDescription(powiat),
+    "url": `${window.location.origin}/powiat/${powiat.slug}`,
+
+    "breadcrumb": {
+      "@type": "BreadcrumbList",
+      "itemListElement": breadcrumb.map((item, index) => ({
+        "@type": "ListItem",
+        "position": index + 1,
+        "name": item.label,
+        "item": `${window.location.origin}${item.href}`
+      }))
+    },
+
+    "about": {
+      "@type": "Thing",
+      "name": `SEO w powiecie ${powiat.name}`,
+      "description": `Analiza SEO, konkurencji i potencjału wyszukiwania w powiecie ${powiat.name}.`
+    },
+
+    "mainEntity": {
+      "@type": "AdministrativeArea",
+      "name": powiat.name,
+      "alternateName": `Powiat ${powiat.name}`,
+      "url": `${window.location.origin}/powiat/${powiat.slug}`,
+      "containedInPlace": {
+        "@type": "AdministrativeArea",
+        "name": powiat.woj.name,
+        "alternateName": `Województwo ${powiat.woj.name}`,
+        "url": `${window.location.origin}/wojewodztwo/${powiat.woj.slug}`,
+        "containedInPlace": {
+          "@type": "Country",
+          "name": "Polska"
+        }
       }
-    };
+    },
 
-    const old = document.getElementById("powiat-jsonld");
-    if (old) old.remove();
+    "areaServed": {
+      "@type": "AdministrativeArea",
+      "name": powiat.name
+    },
 
-    const script = document.createElement("script");
-    script.id = "powiat-jsonld";
-    script.type = "application/ld+json";
-    script.textContent = JSON.stringify(jsonLd);
-    document.head.appendChild(script);
+    "hasPart": [
+      {
+        "@type": "AdministrativeArea",
+        "name": powiat.woj.name,
+        "url": `${window.location.origin}/wojewodztwo/${powiat.woj.slug}`
+      }
+    ]
+  };
 
-    return () => {
-      const cleanup = document.getElementById("powiat-jsonld");
-      if (cleanup) cleanup.remove();
-    };
-  }, [powiat, breadcrumb]);
+  const old = document.getElementById("powiat-jsonld");
+  if (old) old.remove();
+
+  const script = document.createElement("script");
+  script.id = "powiat-jsonld";
+  script.type = "application/ld+json";
+  script.textContent = JSON.stringify(jsonLd);
+  document.head.appendChild(script);
+
+  return () => {
+    const cleanup = document.getElementById("powiat-jsonld");
+    if (cleanup) cleanup.remove();
+  };
+}, [powiat, breadcrumb]);
 
   return (
     <div className="container mx-auto px-4 py-10">
