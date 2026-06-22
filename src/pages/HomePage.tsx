@@ -440,10 +440,34 @@ function HeroSection() {
 
           </div>
 
-          {/* SAĞ TARAF — DEKORATİF ALAN */}
-          <div className="hidden lg:block">
-            <div className="w-full h-[420px] rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm shadow-2xl" />
-          </div>
+{/* SAĞ TARAF — PREMIUM 3D GLOW PANEL */}
+<div className="hidden lg:flex items-center justify-center">
+  <div className="relative w-full h-[420px] max-w-lg">
+
+    {/* Glow Mesh Background */}
+    <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-indigo-500/20 via-cyan-400/10 to-emerald-400/20 blur-2xl opacity-70" />
+
+    {/* Glass Panel */}
+    <div className="absolute inset-0 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_0_40px_-10px_rgba(0,0,0,0.6)]" />
+
+    {/* Floating Orbs */}
+    <div className="absolute -top-6 -right-6 h-24 w-24 rounded-full bg-indigo-400/30 blur-2xl animate-pulse" />
+    <div className="absolute bottom-0 -left-10 h-32 w-32 rounded-full bg-emerald-400/20 blur-3xl animate-pulse" />
+    <div className="absolute top-1/2 left-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-400/20 blur-2xl animate-pulse" />
+
+    {/* Inner subtle grid */}
+    <div
+      className="absolute inset-0 rounded-3xl opacity-[0.06]"
+      style={{
+        backgroundImage:
+          "linear-gradient(rgba(255,255,255,.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.15) 1px, transparent 1px)",
+        backgroundSize: "32px 32px",
+      }}
+    />
+
+  </div>
+</div>
+
 
         </div>
       </div>
