@@ -1,10 +1,11 @@
+import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
 import Breadcrumb from "@/components/Breadcrumb";
 
 import {
   getWojewodztwoBySlug,
-  getPowiatyByWojewewodztwo,
+  getPowiatyByWojewodztwo,
   getWojSeoTitle,
   getWojSeoDescription,
   getWojBreadcrumb
@@ -35,26 +36,33 @@ export default function WojewodztwoPage() {
   const powiaty = getPowiatyByWojewodztwo(woj.slug);
   const breadcrumb = getWojBreadcrumb(woj);
 
-  /* -------------------------------------------------------
-     JSON-LD — ItemList (Powiaty)
-  ------------------------------------------------------- */
-  const itemListJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    itemListElement: powiaty.map((p, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: p.name,
-      url: `${window.location.origin}/powiat/${p.slug}`
-    }))
-  };
+  // JSON-LD ItemList (powiaty w województwie)
+  useEffect(() => {
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      itemListElement: powiaty.map((p, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        name: p.name,
+        url: `${window.location.origin}/powiat/${p.slug}`
+      }))
+    };
 
-  // Inject ItemList JSON-LD
-  const script = document.createElement("script");
-  script.type = "application/ld+json";
-  script.id = "itemlist-jsonld";
-  script.textContent = JSON.stringify(itemListJsonLd);
-  document.head.appendChild(script);
+    const old = document.getElementById("itemlist-jsonld");
+    if (old) old.remove();
+
+    const script = document.createElement("script");
+    script.id = "itemlist-jsonld";
+    script.type = "application/ld+json";
+    script.textContent = JSON.stringify(jsonLd);
+    document.head.appendChild(script);
+
+    return () => {
+      const cleanup = document.getElementById("itemlist-jsonld");
+      if (cleanup) cleanup.remove();
+    };
+  }, [powiaty]);
 
   return (
     <div className="container mx-auto px-4 py-10">
@@ -75,10 +83,10 @@ export default function WojewodztwoPage() {
           SEO w województwie {woj.name}
         </h1>
         <p className="text-lg text-slate-600 max-w-3xl leading-relaxed">
-          Kompleksowe pozycjonowanie lokalne w województwie {woj.name}. 
-          Zwiększamy widoczność firm w Google, budujemy przewagę konkurencyjną 
-          oraz pomagamy zdobywać klientów z wyszukiwarki. Sprawdź analizę regionu, 
-          najważniejsze powiaty oraz potencjał SEO w Twojej lokalizacji.
+          Kompleksowe pozycjonowanie lokalne w województwie {woj.name}. Zwiększamy
+          widoczność firm w Google, budujemy przewagę konkurencyjną oraz pomagamy
+          zdobywać klientów z wyszukiwarki. Sprawdź analizę regionu, najważniejsze
+          powiaty oraz potencjał SEO w Twojej lokalizacji.
         </p>
       </section>
 
@@ -86,11 +94,11 @@ export default function WojewodztwoPage() {
       <section className="prose prose-slate max-w-none mb-12">
         <h2>Dlaczego SEO w województwie {woj.name} jest tak skuteczne?</h2>
         <p>
-          Województwo {woj.name} to dynamicznie rozwijający się region, w którym 
-          lokalne firmy coraz częściej inwestują w widoczność online. 
-          Wzrost liczby przedsiębiorstw, rosnąca konkurencja oraz zmieniające się 
-          zachowania użytkowników sprawiają, że pozycjonowanie stron internetowych 
-          stało się kluczowym elementem strategii marketingowej.
+          Województwo {woj.name} to dynamicznie rozwijający się region, w którym
+          lokalne firmy coraz częściej inwestują w widoczność online. Wzrost liczby
+          przedsiębiorstw, rosnąca konkurencja oraz zmieniające się zachowania
+          użytkowników sprawiają, że pozycjonowanie stron internetowych stało się
+          kluczowym elementem strategii marketingowej.
         </p>
 
         <h3>Najważniejsze czynniki wpływające na SEO w regionie</h3>
@@ -104,9 +112,9 @@ export default function WojewodztwoPage() {
 
         <h2>Jak wygląda konkurencja w Google?</h2>
         <p>
-          W województwie {woj.name} konkurencja SEO zależy od powiatu i branży. 
-          W większych powiatach widoczność w Google wymaga bardziej zaawansowanych 
-          działań, natomiast w mniejszych lokalizacjach można osiągnąć szybkie efekty 
+          W województwie {woj.name} konkurencja SEO zależy od powiatu i branży.
+          W większych powiatach widoczność w Google wymaga bardziej zaawansowanych
+          działań, natomiast w mniejszych lokalizacjach można osiągnąć szybkie efekty
           dzięki precyzyjnej optymalizacji i lokalnym treściom.
         </p>
 
@@ -121,9 +129,9 @@ export default function WojewodztwoPage() {
 
         <h2>Potencjał SEO w powiatach województwa {woj.name}</h2>
         <p>
-          Region składa się z {powiaty.length} powiatów, z których każdy posiada 
-          własną specyfikę rynkową. Poniżej znajdziesz pełną listę powiatów, 
-          które możesz wybrać, aby zobaczyć szczegółową analizę lokalnego SEO.
+          Region składa się z {powiaty.length} powiatów, z których każdy posiada
+          własną specyfikę rynkową. Poniżej znajdziesz pełną listę powiatów, które
+          możesz wybrać, aby zobaczyć szczegółową analizę lokalnego SEO.
         </p>
       </section>
 
@@ -150,7 +158,7 @@ export default function WojewodztwoPage() {
           Chcesz zwiększyć widoczność swojej firmy?
         </h2>
         <p className="text-slate-700 mb-6">
-          Oferujemy profesjonalne pozycjonowanie lokalne w całym województwie {woj.name}.  
+          Oferujemy profesjonalne pozycjonowanie lokalne w całym województwie {woj.name}.
           Skontaktuj się z nami i otrzymaj darmową analizę SEO.
         </p>
         <a
