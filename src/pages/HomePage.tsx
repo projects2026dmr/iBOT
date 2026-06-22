@@ -326,11 +326,13 @@ const TRUST_BOOSTERS = [
 function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 py-16 sm:py-20 md:py-28 lg:py-36">
+
       {/* Decorative background */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
         <div className="absolute -top-40 -right-40 h-[400px] w-[400px] rounded-full bg-indigo-600/15 blur-[120px] sm:h-[600px] sm:w-[600px]" />
         <div className="absolute -bottom-40 -left-40 h-[300px] w-[300px] rounded-full bg-purple-600/10 blur-[100px] sm:h-[500px] sm:w-[500px]" />
         <div className="absolute top-1/3 left-1/2 h-[200px] w-[200px] -translate-x-1/2 rounded-full bg-cyan-500/5 blur-[80px] sm:h-[300px] sm:w-[300px]" />
+
         {/* Grid pattern overlay */}
         <div
           className="absolute inset-0 opacity-[0.03]"
@@ -343,102 +345,111 @@ function HeroSection() {
       </div>
 
       <div className="container relative mx-auto px-4">
-        <div className="mx-auto max-w-4xl text-center">
-          {/* Badge */}
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-indigo-400/20 bg-indigo-500/10 px-4 py-2 backdrop-blur-sm sm:mb-8 sm:gap-2.5 sm:px-5">
-            <span className="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex h-full w-full rounded-full bg-emerald-400" />
-            </span>
-            <span className="text-xs font-medium text-indigo-200 sm:text-sm">
-              Przyjmujemy nowych klientów — wolne terminy w tym miesiącu
-            </span>
-          </div>
+        {/* ⭐ 2 KOLONLU PREMIUM GRID */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-          {/* Headline */}
-          <h1 className="text-3xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
-            Zdobądź{" "}
-            <span className="bg-gradient-to-r from-indigo-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
-              więcej klientów
-            </span>
-            <br className="hidden sm:block" />
-            <span className="sm:hidden"> </span>
-            w swoim mieście
-          </h1>
+          {/* SOL TARAF — METİN */}
+          <div className="max-w-2xl">
 
-          {/* Subheadline */}
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-300 sm:mt-6 sm:text-lg md:text-xl">
-            Lokalne SEO, które przynosi realne wyniki. Pomagamy firmom
-            w&nbsp;całej Polsce dominować w lokalnych wynikach Google i zdobywać
-            klientów z ich regionu.
-          </p>
+            {/* Badge */}
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-indigo-400/20 bg-indigo-500/10 px-4 py-2 backdrop-blur-sm sm:mb-8 sm:gap-2.5 sm:px-5">
+              <span className="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex h-full w-full rounded-full bg-emerald-400" />
+              </span>
+              <span className="text-xs font-medium text-indigo-200 sm:text-sm">
+                Przyjmujemy nowych klientów — wolne terminy w tym miesiącu
+              </span>
+            </div>
 
-          {/* Benefits */}
-          <ul className="mx-auto mt-6 flex max-w-xl flex-col gap-2.5 text-left sm:mt-8 sm:gap-3">
-            {HERO_BENEFITS.map((benefit) => (
-              <li
-                key={benefit}
-                className="flex items-start gap-2.5 text-sm text-slate-300 sm:gap-3 sm:text-base"
-              >
-                <svg
-                  className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400 sm:h-5 sm:w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2.5}
+            {/* Headline */}
+            <h1 className="text-3xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
+              Zdobądź{" "}
+              <span className="bg-gradient-to-r from-indigo-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
+                więcej klientów
+              </span>
+              <br className="hidden sm:block" />
+              <span className="sm:hidden"> </span>
+              w swoim mieście
+            </h1>
+
+            {/* Subheadline */}
+            <p className="mt-4 max-w-xl text-base leading-relaxed text-slate-300 sm:mt-6 sm:text-lg md:text-xl">
+              Lokalne SEO, które przynosi realne wyniki. Pomagamy firmom
+              w całej Polsce dominować w lokalnych wynikach Google i zdobywać
+              klientów z ich regionu.
+            </p>
+
+            {/* Benefits */}
+            <ul className="mt-6 flex max-w-xl flex-col gap-2.5 text-left sm:mt-8 sm:gap-3">
+              {HERO_BENEFITS.map((benefit) => (
+                <li
+                  key={benefit}
+                  className="flex items-start gap-2.5 text-sm text-slate-300 sm:gap-3 sm:text-base"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-                {benefit}
-              </li>
-            ))}
-          </ul>
+                  <svg
+                    className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400 sm:h-5 sm:w-5"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth={2.5}
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                  {benefit}
+                </li>
+              ))}
+            </ul>
 
-          {/* CTAs */}
-          <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:mt-10 sm:flex-row sm:gap-4">
-            <button
-              type="button"
-              onClick={() => scrollToSection("kontakt")}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-indigo-600 px-6 py-3.5 text-base font-bold text-white shadow-lg shadow-indigo-500/25 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-indigo-500/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 sm:w-auto sm:px-8 sm:py-4"
-            >
-              Bezpłatna konsultacja SEO
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
-              </svg>
-            </button>
-            <button
-              type="button"
-              onClick={() => scrollToSection("uslugi")}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-600 px-6 py-3.5 text-base font-semibold text-slate-300 transition-all duration-200 hover:border-slate-500 hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 sm:w-auto sm:px-8 sm:py-4"
-            >
-              Poznaj nasze usługi
-            </button>
-          </div>
-
-          {/* Social Proof Badges */}
-          <div className="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-3 sm:mt-14 sm:grid-cols-3 sm:gap-4">
-            {SOCIAL_PROOF.map((item) => (
-              <div
-                key={item.text}
-                className="flex items-center justify-center gap-2.5 rounded-xl border border-slate-700/50 bg-slate-800/40 px-4 py-3 backdrop-blur-sm sm:gap-3 sm:py-3.5"
+            {/* CTAs */}
+            <div className="mt-8 flex flex-col items-start gap-3 sm:mt-10 sm:flex-row sm:gap-4">
+              <button
+                type="button"
+                onClick={() => scrollToSection("kontakt")}
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-indigo-600 px-6 py-3.5 text-base font-bold text-white shadow-lg shadow-indigo-500/25 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-indigo-500/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 sm:px-8 sm:py-4"
               >
-                <span className="text-lg sm:text-xl">{item.icon}</span>
-                <span className="text-xs font-medium text-slate-300 sm:text-sm">
-                  {item.text}
-                </span>
-              </div>
-            ))}
+                Bezpłatna konsultacja SEO
+                <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => scrollToSection("uslugi")}
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-600 px-6 py-3.5 text-base font-semibold text-slate-300 transition-all duration-200 hover:border-slate-500 hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 sm:px-8 sm:py-4"
+              >
+                Poznaj nasze usługi
+              </button>
+            </div>
+
+            {/* Social Proof */}
+            <div className="mt-10 grid max-w-xl grid-cols-1 gap-3 sm:mt-14 sm:grid-cols-3 sm:gap-4">
+              {SOCIAL_PROOF.map((item) => (
+                <div
+                  key={item.text}
+                  className="flex items-center justify-center gap-2.5 rounded-xl border border-slate-700/50 bg-slate-800/40 px-4 py-3 backdrop-blur-sm sm:gap-3 sm:py-3.5"
+                >
+                  <span className="text-lg sm:text-xl">{item.icon}</span>
+                  <span className="text-xs font-medium text-slate-300 sm:text-sm">
+                    {item.text}
+                  </span>
+                </div>
+              ))}
+            </div>
+
           </div>
+
+          {/* SAĞ TARAF — DEKORATİF ALAN */}
+          <div className="hidden lg:block">
+            <div className="w-full h-[420px] rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm shadow-2xl" />
+          </div>
+
         </div>
       </div>
     </section>
   );
 }
-
 /* ──────────────────────────────────────────────────────────────────
    2) O NAS — E-E-A-T Boost
    ────────────────────────────────────────────────────────────────── */
