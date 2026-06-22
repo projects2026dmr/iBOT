@@ -93,8 +93,19 @@ useEffect(() => {
       "position": index + 1,
       "name": p.name,
       "url": `${window.location.origin}/powiat/${p.slug}`
-    }))
-  };
+    })),
+    "faq": {
+  "@type": "FAQPage",
+  "mainEntity": faq.map((item) => ({
+    "@type": "Question",
+    "name": item.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.a
+    }
+  }))
+}
+};
 
   const old = document.getElementById("woj-jsonld");
   if (old) old.remove();
