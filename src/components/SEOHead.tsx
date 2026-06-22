@@ -3,26 +3,32 @@ import { useEffect } from "react";
 interface SEOHeadProps {
   title: string;
   description: string;
-  canonicalPath?: string; // örn: "/powiat/kartuski"
-  ogType?: string; // "website" | "article"
+  canonicalPath?: string; // "/powiat/kartuski"
+  ogType?: "website" | "article";
+  imageUrl?: string; // optional custom OG/Twitter image
+  robots?: string; // e.g. "index, follow"
 }
 
 export default function SEOHead({
   title,
   description,
   canonicalPath = "",
-  ogType = "website"
+  ogType = "website",
+  imageUrl,
+  robots = "index, follow"
 }: SEOHeadProps) {
   useEffect(() => {
-    // Remove old tags to avoid duplicates
     const removeIfExists = (selector: string) => {
       document.querySelectorAll(selector).forEach((el) => el.remove());
     };
 
+    // Clean previous meta tags
     removeIfExists("meta[name='description']");
-    removeIfExists("link[rel='canonical']");
+    removeIfExists("meta[name='robots']");
+    removeIfExists("meta[name='theme-color']");
     removeIfExists("meta[property^='og:']");
     removeIfExists("meta[name^='twitter:']");
+    removeIfExists("link[rel='canonical']");
 
     // Title
     document.title = title;
@@ -33,63 +39,73 @@ export default function SEOHead({
     metaDesc.content = description;
     document.head.appendChild(metaDesc);
 
-    // Canonical
+    // Robots
+    const metaRobots = document.createElement("meta");
+    metaRobots.name = "robots";
+    metaRobots.content = robots;
+    document.head.appendChild(metaRobots);
+
+    // Theme color
+    const theme = document.createElement("meta");
+    theme.name = "theme-color";
+    theme.content = "#0f172a"; // slate-900
+    document.head.appendChild(theme);
+
+    // Canonical (hash temizleme)
     const canonical = document.createElement("link");
     canonical.rel = "canonical";
-
     const origin = window.location.origin;
-    canonical.href = origin + canonicalPath;
+    const cleanCanonical = (origin + canonicalPath).split("#")[0];
+    canonical.href = cleanCanonical;
     document.head.appendChild(canonical);
 
+    // OG image fallback
+    const finalImage =
+      imageUrl ||
+      `${origin}/og-default.jpg`; // fallback image (sen ekleyeceksin)
+
     // OG tags
-    const ogTitle = document.createElement("meta");
-    ogTitle.setAttribute("property", "og:title");
-    ogTitle.content = title;
-    document.head.appendChild(ogTitle);
+    const ogTags = [
+      ["og:title", title],
+      ["og:description", description],
+      ["og:url", cleanCanonical],
+      ["og:type", ogType],
+      ["og:site_name", "iBOT Agencja SEO"],
+      ["og:image", finalImage]
+    ];
 
-    const ogDesc = document.createElement("meta");
-    ogDesc.setAttribute("property", "og:description");
-    ogDesc.content = description;
-    document.head.appendChild(ogDesc);
-
-    const ogUrl = document.createElement("meta");
-    ogUrl.setAttribute("property", "og:url");
-    ogUrl.content = origin + canonicalPath;
-    document.head.appendChild(ogUrl);
-
-    const ogTypeTag = document.createElement("meta");
-    ogTypeTag.setAttribute("property", "og:type");
-    ogTypeTag.content = ogType;
-    document.head.appendChild(ogTypeTag);
-
-    const ogSite = document.createElement("meta");
-    ogSite.setAttribute("property", "og:site_name");
-    ogSite.content = "iBOT Agencja SEO";
-    document.head.appendChild(ogSite);
+    ogTags.forEach(([property, content]) => {
+      const tag = document.createElement("meta");
+      tag.setAttribute("property", property);
+      tag.content = content;
+      document.head.appendChild(tag);
+    });
 
     // Twitter tags
-    const twCard = document.createElement("meta");
-    twCard.name = "twitter:card";
-    twCard.content = "summary_large_image";
-    document.head.appendChild(twCard);
+    const twitterTags = [
+      ["twitter:card", "summary_large_image"],
+      ["twitter:title", title],
+      ["twitter:description", description],
+      ["twitter:image", finalImage]
+    ];
 
-    const twTitle = document.createElement("meta");
-    twTitle.name = "twitter:title";
-    twTitle.content = title;
-    document.head.appendChild(twTitle);
+    twitterTags.forEach(([name, content]) => {
+      const tag = document.createElement("meta");
+      tag.name = name;
+      tag.content = content;
+      document.head.appendChild(tag);
+    });
 
-    const twDesc = document.createElement("meta");
-    twDesc.name = "twitter:description";
-    twDesc.content = description;
-    document.head.appendChild(twDesc);
-
+    // Cleanup on unmount
     return () => {
       removeIfExists("meta[name='description']");
-      removeIfExists("link[rel='canonical']");
+      removeIfExists("meta[name='robots']");
+      removeIfExists("meta[name='theme-color']");
       removeIfExists("meta[property^='og:']");
       removeIfExists("meta[name^='twitter:']");
+      removeIfExists("link[rel='canonical']");
     };
-  }, [title, description, canonicalPath, ogType]);
+  }, [title, description, canonicalPath, ogType, imageUrl, robots]);
 
   return null;
 }
