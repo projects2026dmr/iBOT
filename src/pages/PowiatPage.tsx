@@ -112,12 +112,12 @@ useEffect(() => {
     <div className="container mx-auto px-4 py-10">
       {/* SEO */}
       <SEOHead
-        title={getPowiatSeoTitle(powiat)}
-        description={getPowiatSeoDescription(powiat)}
-        canonicalPath={`/powiat/${powiat.slug}`}
-        ogType="article"
-      />
-
+  title={getPowiatSeoTitle(powiat)}
+  description={getPowiatSeoDescription(powiat)}
+  canonicalPath={`/powiat/${powiat.slug}`}
+  ogType="article"
+  imageUrl={`/og/powiat/${powiat.slug}.jpg`}   // ⭐ YENİ EKLENDİ
+/>
       {/* Breadcrumb */}
       <Breadcrumb items={breadcrumb} />
 
