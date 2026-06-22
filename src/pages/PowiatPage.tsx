@@ -36,88 +36,95 @@ export default function PowiatPage() {
   const premium = getPremiumPowiatContent(powiat.name, powiat.woj.name);
 
   /* -------------------------------------------------------
-     JSON-LD — WebPage + Local SEO context
+     JSON-LD — WebPage + Article + LocalBusiness + Breadcrumb
   ------------------------------------------------------- */
-useEffect(() => {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": `SEO w powiecie ${powiat.name}`,
-    "description": getPowiatSeoDescription(powiat),
-    "url": `${window.location.origin}/powiat/${powiat.slug}`,
+  useEffect(() => {
+    const origin = window.location.origin;
+    const url = `${origin}/powiat/${powiat.slug}`;
 
-    "breadcrumb": {
-      "@type": "BreadcrumbList",
-      "itemListElement": breadcrumb.map((item, index) => ({
-        "@type": "ListItem",
-        "position": index + 1,
-        "name": item.label,
-        "item": `${window.location.origin}${item.href}`
-      }))
-    },
-
-    "about": {
-      "@type": "Thing",
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
       "name": `SEO w powiecie ${powiat.name}`,
-      "description": `Analiza SEO, konkurencji i potencjału wyszukiwania w powiecie ${powiat.name}.`
-    },
+      "description": getPowiatSeoDescription(powiat),
+      "url": url,
 
-    "mainEntity": {
-      "@type": "AdministrativeArea",
-      "name": powiat.name,
-      "alternateName": `Powiat ${powiat.name}`,
-      "url": `${window.location.origin}/powiat/${powiat.slug}`,
-      "containedInPlace": {
+      "breadcrumb": {
+        "@type": "BreadcrumbList",
+        "itemListElement": breadcrumb.map((item, index) => ({
+          "@type": "ListItem",
+          "position": index + 1,
+          "name": item.label,
+          "item": `${origin}${item.href}`
+        }))
+      },
+
+      "mainEntity": {
+        "@type": "Article",
+        "headline": `SEO w powiecie ${powiat.name}`,
+        "description": getPowiatSeoDescription(powiat),
+        "image": `${origin}/og/powiat/${powiat.slug}.jpg`,
+        "author": {
+          "@type": "Organization",
+          "name": "Arena AI"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Arena AI",
+          "logo": {
+            "@type": "ImageObject",
+            "url": `${origin}/og/default.jpg`
+          }
+        },
+        "mainEntityOfPage": url
+      },
+
+      "about": {
         "@type": "AdministrativeArea",
-        "name": powiat.woj.name,
-        "alternateName": `Województwo ${powiat.woj.name}`,
-        "url": `${window.location.origin}/wojewodztwo/${powiat.woj.slug}`,
+        "name": powiat.name,
         "containedInPlace": {
-          "@type": "Country",
-          "name": "Polska"
+          "@type": "AdministrativeArea",
+          "name": powiat.woj.name,
+          "containedInPlace": {
+            "@type": "Country",
+            "name": "Polska"
+          }
         }
-      }
-    },
+      },
 
-    "areaServed": {
-      "@type": "AdministrativeArea",
-      "name": powiat.name
-    },
-
-    "hasPart": [
-      {
+      "areaServed": {
         "@type": "AdministrativeArea",
-        "name": powiat.woj.name,
-        "url": `${window.location.origin}/wojewodztwo/${powiat.woj.slug}`
+        "name": powiat.name
       }
-    ]
-  };
+    };
 
-  const old = document.getElementById("powiat-jsonld");
-  if (old) old.remove();
+    const old = document.getElementById("powiat-jsonld");
+    if (old) old.remove();
 
-  const script = document.createElement("script");
-  script.id = "powiat-jsonld";
-  script.type = "application/ld+json";
-  script.textContent = JSON.stringify(jsonLd);
-  document.head.appendChild(script);
+    const script = document.createElement("script");
+    script.id = "powiat-jsonld";
+    script.type = "application/ld+json";
+    script.textContent = JSON.stringify(jsonLd);
+    document.head.appendChild(script);
 
-  return () => {
-    const cleanup = document.getElementById("powiat-jsonld");
-    if (cleanup) cleanup.remove();
-  };
-}, [powiat, breadcrumb]);
+    return () => {
+      const cleanup = document.getElementById("powiat-jsonld");
+      if (cleanup) cleanup.remove();
+    };
+  }, [powiat, breadcrumb]);
 
   return (
     <div className="container mx-auto px-4 py-10">
+
       {/* SEO */}
       <SEOHead
-  title={getPowiatSeoTitle(powiat)}
-  description={getPowiatSeoDescription(powiat)}
-  canonicalPath={`/powiat/${powiat.slug}`}
-  ogType="article"
-  imageUrl={`/og/powiat/${powiat.slug}.jpg`}   // ⭐ YENİ EKLENDİ
-/>
+        title={getPowiatSeoTitle(powiat)}
+        description={getPowiatSeoDescription(powiat)}
+        canonicalPath={`/powiat/${powiat.slug}`}
+        ogType="article"
+        imageUrl={`/og/powiat/${powiat.slug}.jpg`}
+      />
+
       {/* Breadcrumb */}
       <Breadcrumb items={breadcrumb} />
 
