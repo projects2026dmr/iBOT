@@ -97,8 +97,19 @@ export default function PowiatPage() {
       "areaServed": {
         "@type": "AdministrativeArea",
         "name": powiat.name
-      }
-    };
+      },
+      "faq": {
+  "@type": "FAQPage",
+  "mainEntity": faq.map((item) => ({
+    "@type": "Question",
+    "name": item.q,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.a
+    }
+  }))
+}
+};
 
     const old = document.getElementById("powiat-jsonld");
     if (old) old.remove();
