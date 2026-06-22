@@ -440,22 +440,22 @@ function HeroSection() {
 
           </div>
 
-{/* SAĞ TARAF — PREMIUM 3D GLOW PANEL */}
+{/* SAĞ TARAF — PREMIUM WOW VISUAL */}
 <div className="hidden lg:flex items-center justify-center">
-  <div className="relative w-full h-[420px] max-w-lg">
+  <div className="relative w-full max-w-md h-[460px]">
 
-    {/* Glow Mesh Background */}
-    <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-indigo-500/20 via-cyan-400/10 to-emerald-400/20 blur-2xl opacity-70" />
+    {/* Outer glow mesh */}
+    <div className="absolute inset-0 rounded-3xl bg-gradient-to-br from-indigo-500/30 via-cyan-400/20 to-emerald-400/30 blur-3xl opacity-70" />
 
-    {/* Glass Panel */}
-    <div className="absolute inset-0 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_0_40px_-10px_rgba(0,0,0,0.6)]" />
+    {/* Glass card */}
+    <div className="absolute inset-0 rounded-3xl bg-white/5 backdrop-blur-2xl border border-white/10 shadow-[0_0_60px_-10px_rgba(0,0,0,0.6)]" />
 
-    {/* Floating Orbs */}
-    <div className="absolute -top-6 -right-6 h-24 w-24 rounded-full bg-indigo-400/30 blur-2xl animate-pulse" />
-    <div className="absolute bottom-0 -left-10 h-32 w-32 rounded-full bg-emerald-400/20 blur-3xl animate-pulse" />
-    <div className="absolute top-1/2 left-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-400/20 blur-2xl animate-pulse" />
+    {/* Floating shapes */}
+    <div className="absolute -top-10 right-0 h-28 w-28 rounded-full bg-indigo-400/40 blur-2xl animate-pulse" />
+    <div className="absolute bottom-0 -left-10 h-36 w-36 rounded-full bg-emerald-400/30 blur-3xl animate-pulse" />
+    <div className="absolute top-1/2 left-1/2 h-24 w-24 -translate-x-1/2 -translate-y-1/2 rounded-full bg-cyan-400/30 blur-2xl animate-pulse" />
 
-    {/* Inner subtle grid */}
+    {/* Inner grid */}
     <div
       className="absolute inset-0 rounded-3xl opacity-[0.06]"
       style={{
@@ -465,10 +465,13 @@ function HeroSection() {
       }}
     />
 
+    {/* Center glow orb */}
+    <div className="absolute inset-0 flex items-center justify-center">
+      <div className="h-40 w-40 rounded-full bg-gradient-to-br from-indigo-400/40 to-cyan-400/40 blur-2xl opacity-60" />
+    </div>
+
   </div>
 </div>
-
-
         </div>
       </div>
     </section>
