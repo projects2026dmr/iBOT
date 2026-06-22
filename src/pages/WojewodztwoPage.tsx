@@ -91,49 +91,34 @@ export default function WojewodztwoPage() {
       </section>
 
       {/* PREMIUM CONTENT */}
-      <section className="prose prose-slate max-w-none mb-12">
-        <h2>Dlaczego SEO w województwie {woj.name} jest tak skuteczne?</h2>
-        <p>
-          Województwo {woj.name} to dynamicznie rozwijający się region, w którym
-          lokalne firmy coraz częściej inwestują w widoczność online. Wzrost liczby
-          przedsiębiorstw, rosnąca konkurencja oraz zmieniające się zachowania
-          użytkowników sprawiają, że pozycjonowanie stron internetowych stało się
-          kluczowym elementem strategii marketingowej.
-        </p>
+import { getPremiumWojContent } from "@/data/premiumWojContent";
 
-        <h3>Najważniejsze czynniki wpływające na SEO w regionie</h3>
-        <ul>
-          <li>Wysoka aktywność lokalnych przedsiębiorców</li>
-          <li>Duża liczba zapytań lokalnych w Google</li>
-          <li>Silna konkurencja w branżach usługowych</li>
-          <li>Rosnące znaczenie Google Maps i opinii klientów</li>
-          <li>Dynamiczny rozwój e-commerce</li>
-        </ul>
+const premium = getPremiumWojContent(woj);
 
-        <h2>Jak wygląda konkurencja w Google?</h2>
-        <p>
-          W województwie {woj.name} konkurencja SEO zależy od powiatu i branży.
-          W większych powiatach widoczność w Google wymaga bardziej zaawansowanych
-          działań, natomiast w mniejszych lokalizacjach można osiągnąć szybkie efekty
-          dzięki precyzyjnej optymalizacji i lokalnym treściom.
-        </p>
+<section className="prose prose-slate max-w-none mb-12">
+  <h2>Dlaczego SEO w województwie {woj.name} jest tak skuteczne?</h2>
+  <p>{premium.whyEffective}</p>
 
-        <h2>Najczęściej pozycjonowane branże</h2>
-        <ul>
-          <li>Usługi budowlane i remontowe</li>
-          <li>Gabinety medyczne i kosmetyczne</li>
-          <li>Firmy transportowe i logistyczne</li>
-          <li>Restauracje i gastronomia</li>
-          <li>Sklepy internetowe</li>
-        </ul>
+  <h3>Najważniejsze czynniki wpływające na SEO w regionie</h3>
+  <ul>
+    {premium.factors.map((f) => (
+      <li key={f}>{f}</li>
+    ))}
+  </ul>
 
-        <h2>Potencjał SEO w powiatach województwa {woj.name}</h2>
-        <p>
-          Region składa się z {powiaty.length} powiatów, z których każdy posiada
-          własną specyfikę rynkową. Poniżej znajdziesz pełną listę powiatów, które
-          możesz wybrać, aby zobaczyć szczegółową analizę lokalnego SEO.
-        </p>
-      </section>
+  <h2>Jak wygląda konkurencja w Google?</h2>
+  <p>{premium.competition}</p>
+
+  <h2>Najczęściej pozycjonowane branże</h2>
+  <ul>
+    {premium.industries.map((b) => (
+      <li key={b}>{b}</li>
+    ))}
+  </ul>
+
+  <h2>Potencjał SEO w powiatach województwa {woj.name}</h2>
+  <p>{premium.powiatIntro}</p>
+</section>
 
       {/* POWIAT LIST */}
       <h2 className="text-2xl font-semibold text-slate-800 mb-4">
