@@ -381,6 +381,12 @@ function HeroSection() {
   Nasze strategie SEO oparte są na danych, analizie konkurencji i lokalnych trendach wyszukiwania. 
   Dzięki temu Twoja firma może skutecznie docierać do klientów z Twojego miasta i okolic.
           </p>
+          <section className="sr-only">
+  <p>
+    iBOT to agencja SEO specjalizująca się w pozycjonowaniu lokalnym w całej Polsce.
+    Oferujemy kompleksowe usługi SEO dla firm działających w 16 województwach i 380 powiatach.
+  </p>
+          </section>
 
           {/* Benefits */}
           <ul className="mt-6 flex max-w-3xl flex-col gap-2.5 text-left sm:mt-8 sm:gap-3 mx-auto lg:mx-0">
