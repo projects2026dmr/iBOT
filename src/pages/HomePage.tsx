@@ -335,14 +335,14 @@ const CONTACT_ITEMS = [
     icon: "📞",
     label: "Telefon",
     value: "+48 884 805 463",
-    href: "tel:+48123456789",
+    href: "tel:+48884805463",
     color: "bg-emerald-100 text-emerald-600",
   },
   {
     icon: "💬",
     label: "WhatsApp",
     value: "Napisz na WhatsApp",
-    href: "https://wa.me/48123456789",
+    href: "https://wa.me/48884805463",
     color: "bg-green-100 text-green-600",
   },
   {
@@ -1016,7 +1016,7 @@ function ContactSection() {
               📧 Napisz do nas
             </a>
             <a
-              href="https://wa.me/48123456789"
+              href="https://wa.me/48884805463"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex w-full items-center justify-center gap-2 rounded-xl border-2 border-green-600 bg-green-50 px-6 py-3.5 text-sm font-bold text-green-700 transition-all duration-200 hover:bg-green-600 hover:text-white sm:w-auto sm:px-8"
