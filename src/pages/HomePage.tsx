@@ -377,6 +377,10 @@ function HeroSection() {
             w całej Polsce dominować w lokalnych wynikach Google i zdobywać
             klientów z ich regionu.
           </p>
+          <p className="mt-3 max-w-3xl text-slate-400 text-sm sm:text-base leading-relaxed mx-auto lg:mx-0">
+  Nasze strategie SEO oparte są na danych, analizie konkurencji i lokalnych trendach wyszukiwania. 
+  Dzięki temu Twoja firma może skutecznie docierać do klientów z Twojego miasta i okolic.
+          </p>
 
           {/* Benefits */}
           <ul className="mt-6 flex max-w-3xl flex-col gap-2.5 text-left sm:mt-8 sm:gap-3 mx-auto lg:mx-0">
