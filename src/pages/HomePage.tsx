@@ -417,7 +417,7 @@ function HeroSection() {
           </div>
 
 {/* Headline — now fits in ONE LINE on desktop */}
-          <h1 className="mx-auto max-w-[1100px] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight text-white">
+          <h1 className="max-w-[1100px] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight text-white">
   Zdobądź więcej klientów w swoim mieście
           </h1>
 
@@ -427,13 +427,13 @@ function HeroSection() {
           </h2>
 
           {/* Subheadline */}
-          <p className="mt-6 mx-auto max-w-[900px] text-lg md:text-xl text-slate-300 leading-relaxed">
+          <p className="mt-6 max-w-[900px] text-lg md:text-xl text-slate-300 leading-relaxed">
             Lokalne SEO, które przynosi realne wyniki. Pomagamy firmom
             w całej Polsce dominować w lokalnych wynikach Google i zdobywać
             klientów z ich regionu.
           </p>
 
-          <p className="mt-4 mx-auto max-w-[900px] text-base text-slate-400 leading-relaxed">
+          <p className="mt-4 max-w-[900px] text-base text-slate-400 leading-relaxed">
             Nasze strategie SEO oparte są na danych, analizie konkurencji i lokalnych trendach wyszukiwania. 
             Dzięki temu Twoja firma może skutecznie docierać do klientów z Twojego miasta i okolic.
           </p>
@@ -446,7 +446,7 @@ function HeroSection() {
           </section>
 
           {/* Benefits */}
-          <ul className="mt-10 mx-auto max-w-[850px] flex flex-col gap-3 text-left sm:text-lg">
+          <ul className="mt-10 max-w-[850px] flex flex-col gap-3 text-left sm:text-lg">
             {HERO_BENEFITS.map((benefit) => (
               <li
                 key={benefit}
@@ -467,7 +467,7 @@ function HeroSection() {
           </ul>
 
           {/* CTAs */}
-          <div className="mt-12 flex flex-col sm:flex-row justify-center gap-4">
+          <div className="mt-12 flex flex-col sm:flex-row gap-4">
             <button
               type="button"
               onClick={() => scrollToSection("kontakt")}
