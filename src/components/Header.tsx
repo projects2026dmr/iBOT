@@ -304,8 +304,13 @@ export default function Header() {
               </span>
             </div>
 
-            <p className="mt-6 text-center text-sm text-slate-400">
-              🐧 iBOT — Agencja SEO
+            <p className="mt-6 text-center text-sm text-slate-400 flex items-center justify-center gap-2">
+            <img
+            src="/favicon-ibot.png"
+            alt="iBOT Logo"
+            className="h-4 w-auto opacity-70"
+            />
+            iBOT — Agencja SEO
             </p>
           </div>
         </nav>
