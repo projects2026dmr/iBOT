@@ -132,7 +132,7 @@ export default function Footer() {
                   href="tel:+48123456789"
                   className="transition-colors duration-200 hover:text-indigo-400"
                 >
-                  +48 123 456 789
+                  +48 884 805 463
                 </a>
               </li>
               <li className="flex items-center gap-3 text-sm text-slate-400">
