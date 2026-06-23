@@ -7,8 +7,8 @@ const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "iBOT — Agencja SEO",
-    "url": "https://twojadomena.pl/",
-    "logo": "https://twojadomena.pl/logo.png",
+    "url": "https://ibot-agencja-seo.vercel.app/",
+    "logo": "https://ibot-agencja-seo.vercel.app/logo.png",
     "description": "Agencja SEO specjalizująca się w pozycjonowaniu lokalnym w całej Polsce.",
     "sameAs": [
       "https://www.facebook.com/...",
@@ -19,32 +19,32 @@ const jsonLd = {
   website: {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "url": "https://twojadomena.pl/",
+    "url": "https://ibot-agencja-seo.vercel.app/",
     "name": "iBOT — Agencja SEO",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://twojadomena.pl/szukaj?q={search_term_string}",
+      "target": "/szukaj?q={search_term_string}",
       "query-input": "required name=search_term_string"
     }
   },
   homepage: {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "url": "https://twojadomena.pl/",
+    "url": "https://ibot-agencja-seo.vercel.app/",
     "name": "iBOT — Agencja SEO | Lokalne SEO w całej Polsce",
     "description": "Agencja SEO specjalizująca się w pozycjonowaniu lokalnym. Obsługujemy 16 województw i 380 powiatów w całej Polsce.",
     "inLanguage": "pl-PL",
     "isPartOf": {
       "@type": "WebSite",
-      "url": "https://twojadomena.pl/"
+      "url": "https://ibot-agencja-seo.vercel.app/"
     }
   },
   localBusiness: {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "iBOT — Agencja SEO",
-    "image": "https://twojadomena.pl/logo.png",
-    "url": "https://twojadomena.pl/",
+    "image": "https://ibot-agencja-seo.vercel.app/logo.png",
+    "url": "https://ibot-agencja-seo.vercel.app/",
     "telephone": "+48 123 456 789",
     "address": {
       "@type": "PostalAddress",
