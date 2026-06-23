@@ -4,14 +4,6 @@ import { useParams, Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
 import Breadcrumb from "@/components/Breadcrumb";
 import { getPremiumWojContent } from "@/data/premiumWojContent";
-import { pingIndexNow } from "@/utils/indexNow";
-
-useEffect(() => {
-  const origin = window.location.origin;
-  const url = `${origin}/wojewodztwo/${slug}`;
-
-  pingIndexNow(url);
-}, [slug]);
 import {
   getWojewodztwoBySlug,
   getPowiatyByWojewodztwo,
