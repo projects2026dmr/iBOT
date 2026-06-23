@@ -378,7 +378,7 @@ const TRUST_BOOSTERS = [
    SECTION COMPONENTS
    ================================================================ */
 
-/* ──────────────────────────────────────────────────────────────────
+/* ────────────────────────────────────────────────────────────────── */
 function HeroSection() {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 py-20 sm:py-24 md:py-32">
