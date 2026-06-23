@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
 import Breadcrumb from "@/components/Breadcrumb";
+import { pingIndexNow } from "@/utils/indexNow";
 
 import {
   getPowiatBySlug,
@@ -122,8 +123,6 @@ export default function PowiatPage() {
       if (cleanup) cleanup.remove();
     };
   }, [powiat, breadcrumb]);
-  import { pingIndexNow } from "@/utils/indexNow";
-
 useEffect(() => {
   if (typeof window === "undefined") return;
 
