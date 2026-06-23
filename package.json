@@ -8,7 +8,7 @@
   "build": "vite build",
   "dev": "vite",
   "preview": "vite preview"
-},
+}
   "dependencies": {
     "clsx": "2.1.1",
     "react": "19.2.6",
