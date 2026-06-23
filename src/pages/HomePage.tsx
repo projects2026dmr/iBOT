@@ -368,7 +368,9 @@ function HeroSection() {
             <span className="sm:hidden"> </span>
             w swoim mieście
           </h1>
-
+          <h2 className="sr-only">
+  Profesjonalne pozycjonowanie lokalne w całej Polsce
+          </h2>
           {/* Subheadline */}
           <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate-300 sm:mt-6 sm:text-lg md:text-xl mx-auto lg:mx-0">
             Lokalne SEO, które przynosi realne wyniki. Pomagamy firmom
