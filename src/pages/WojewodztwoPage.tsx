@@ -122,6 +122,8 @@ export default function WojewodztwoPage() {
   import { pingIndexNow } from "@/utils/indexNow";
 
 useEffect(() => {
+  if (typeof window === "undefined") return;
+
   const origin = window.location.origin;
   const url = `${origin}/wojewodztwo/${slug}`;
 
