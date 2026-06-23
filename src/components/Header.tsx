@@ -95,9 +95,12 @@ export default function Header() {
               className="group flex items-center gap-2 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2"
               onClick={() => handleNavClick("")}
             >
-              <span className="text-3xl transition-transform duration-200 group-hover:scale-110">
-                🐧
-              </span>
+              <img
+              src="/favicon-ibot.png"
+              alt="iBOT Logo"
+              className="h-8 w-auto transition-transform duration-200 group-hover:scale-110"
+            />
+
               <div className="flex flex-col leading-tight">
                 <span className="text-xl font-bold tracking-tight text-slate-900">
                   iBOT
@@ -171,7 +174,12 @@ export default function Header() {
             className="group flex items-center gap-2"
             onClick={() => handleNavClick("")}
           >
-            <span className="text-3xl">🐧</span>
+            <img
+            src="/favicon-ibot.png"
+            alt="iBOT Logo"
+            className="h-8 w-auto"
+            />
+
             <div className="flex flex-col leading-tight">
               <span className="text-xl font-bold tracking-tight text-slate-900">
                 iBOT
