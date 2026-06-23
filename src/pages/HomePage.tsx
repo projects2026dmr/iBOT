@@ -379,17 +379,15 @@ const TRUST_BOOSTERS = [
    ================================================================ */
 
 /* ──────────────────────────────────────────────────────────────────
-   1) HERO — Ultra Premium
-   ────────────────────────────────────────────────────────────────── */
 function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 py-16 sm:py-20 md:py-28 lg:py-36">
+    <section className="relative overflow-hidden bg-gradient-to-br from-slate-950 via-indigo-950 to-slate-900 py-20 sm:py-24 md:py-32">
 
       {/* Decorative background */}
       <div className="pointer-events-none absolute inset-0" aria-hidden="true">
-        <div className="absolute -top-40 -right-40 h-[400px] w-[400px] rounded-full bg-indigo-600/15 blur-[120px] sm:h-[600px] sm:w-[600px]" />
-        <div className="absolute -bottom-40 -left-40 h-[300px] w-[300px] rounded-full bg-purple-600/10 blur-[100px] sm:h-[500px] sm:w-[500px]" />
-        <div className="absolute top-1/3 left-1/2 h-[200px] w-[200px] -translate-x-1/2 rounded-full bg-cyan-500/5 blur-[80px] sm:h-[300px] sm:w-[300px]" />
+        <div className="absolute -top-40 -right-40 h-[450px] w-[450px] rounded-full bg-indigo-600/15 blur-[140px] sm:h-[650px] sm:w-[650px]" />
+        <div className="absolute -bottom-40 -left-40 h-[350px] w-[350px] rounded-full bg-purple-600/10 blur-[120px] sm:h-[550px] sm:w-[550px]" />
+        <div className="absolute top-1/3 left-1/2 h-[240px] w-[240px] -translate-x-1/2 rounded-full bg-cyan-500/5 blur-[100px] sm:h-[340px] sm:w-[340px]" />
 
         <div
           className="absolute inset-0 opacity-[0.03]"
@@ -401,60 +399,60 @@ function HeroSection() {
         />
       </div>
 
-      <div className="container relative mx-auto px-4">
-        {/* ⭐ TEK KOLON — DAHA GENİŞ, PREMIUM */}
-        <div className="mx-auto max-w-6xl text-center lg:text-left">
+      {/* ⭐ WIDE HERO CONTAINER */}
+      <div className="relative mx-auto px-6 sm:px-10 lg:px-16 xl:px-24 max-w-[1600px]">
+
+        {/* ⭐ CONTENT COLUMN — WIDE, CENTERED, PREMIUM */}
+        <div className="mx-auto max-w-[1200px] text-center">
 
           {/* Badge */}
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-indigo-400/20 bg-indigo-500/10 px-4 py-2 backdrop-blur-sm sm:mb-8 sm:gap-2.5 sm:px-5">
-            <span className="relative flex h-2 w-2 sm:h-2.5 sm:w-2.5">
+          <div className="mb-8 inline-flex items-center gap-2 rounded-full border border-indigo-400/20 bg-indigo-500/10 px-5 py-2.5 backdrop-blur-sm sm:gap-3">
+            <span className="relative flex h-2.5 w-2.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex h-full w-full rounded-full bg-emerald-400" />
             </span>
-            <span className="text-xs font-medium text-indigo-200 sm:text-sm">
+            <span className="text-sm font-medium text-indigo-200">
               Przyjmujemy nowych klientów — wolne terminy w tym miesiącu
             </span>
           </div>
 
-          {/* Headline */}
-          <h1 className="text-3xl font-extrabold leading-[1.1] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
-            Zdobądź{" "}
-            <span className="bg-gradient-to-r from-indigo-400 via-cyan-400 to-emerald-400 bg-clip-text text-transparent">
-              więcej klientów
-            </span>
-            <br className="hidden sm:block" />
-            <span className="sm:hidden"> </span>
-            w swoim mieście
+          {/* Headline — now fits in ONE LINE on desktop */}
+          <h1 className="mx-auto max-w-[1100px] text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-[1.05] tracking-tight text-white">
+            Zdobądź więcej klientów w swoim mieście
           </h1>
+
           <h2 className="sr-only">
-  Profesjonalne pozycjonowanie lokalne w całej Polsce
+            Profesjonalne pozycjonowanie lokalne w całej Polsce
           </h2>
+
           {/* Subheadline */}
-          <p className="mt-4 max-w-3xl text-base leading-relaxed text-slate-300 sm:mt-6 sm:text-lg md:text-xl mx-auto lg:mx-0">
+          <p className="mt-6 mx-auto max-w-[900px] text-lg md:text-xl text-slate-300 leading-relaxed">
             Lokalne SEO, które przynosi realne wyniki. Pomagamy firmom
             w całej Polsce dominować w lokalnych wynikach Google i zdobywać
             klientów z ich regionu.
           </p>
-          <p className="mt-3 max-w-3xl text-slate-400 text-sm sm:text-base leading-relaxed mx-auto lg:mx-0">
-  Nasze strategie SEO oparte są na danych, analizie konkurencji i lokalnych trendach wyszukiwania. 
-  Dzięki temu Twoja firma może skutecznie docierać do klientów z Twojego miasta i okolic.
+
+          <p className="mt-4 mx-auto max-w-[900px] text-base text-slate-400 leading-relaxed">
+            Nasze strategie SEO oparte są na danych, analizie konkurencji i lokalnych trendach wyszukiwania. 
+            Dzięki temu Twoja firma może skutecznie docierać do klientów z Twojego miasta i okolic.
           </p>
+
           <section className="sr-only">
-  <p>
-    iBOT to agencja SEO specjalizująca się w pozycjonowaniu lokalnym w całej Polsce.
-    Oferujemy kompleksowe usługi SEO dla firm działających w 16 województwach i 380 powiatach.
-  </p>
+            <p>
+              iBOT to agencja SEO specjalizująca się w pozycjonowaniu lokalnym w całej Polsce.
+              Oferujemy kompleksowe usługi SEO dla firm działających w 16 województwach i 380 powiatach.
+            </p>
           </section>
 
           {/* Benefits */}
-          <ul className="mt-6 flex max-w-3xl flex-col gap-2.5 text-left sm:mt-8 sm:gap-3 mx-auto lg:mx-0">
+          <ul className="mt-10 mx-auto max-w-[850px] flex flex-col gap-3 text-left sm:text-lg">
             {HERO_BENEFITS.map((benefit) => (
               <li
                 key={benefit}
-                className="flex items-start gap-2.5 text-sm text-slate-300 sm:gap-3 sm:text-base"
+                className="flex items-start gap-3 text-slate-300"
               >
                 <svg
-                  className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400 sm:h-5 sm:w-5"
+                  className="mt-1 h-5 w-5 shrink-0 text-emerald-400"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
@@ -468,14 +466,14 @@ function HeroSection() {
           </ul>
 
           {/* CTAs */}
-          <div className="mt-8 flex flex-col items-center lg:items-start gap-3 sm:mt-10 sm:flex-row sm:gap-4">
+          <div className="mt-12 flex flex-col sm:flex-row justify-center gap-4">
             <button
               type="button"
               onClick={() => scrollToSection("kontakt")}
-              className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-indigo-600 px-6 py-3.5 text-base font-bold text-white shadow-lg shadow-indigo-500/25 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-indigo-500/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 sm:px-8 sm:py-4"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-indigo-500 to-indigo-600 px-8 py-4 text-lg font-bold text-white shadow-lg shadow-indigo-500/25 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-indigo-500/30"
             >
               Bezpłatna konsultacja SEO
-              <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
             </button>
@@ -483,21 +481,21 @@ function HeroSection() {
             <button
               type="button"
               onClick={() => scrollToSection("uslugi")}
-              className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-600 px-6 py-3.5 text-base font-semibold text-slate-300 transition-all duration-200 hover:border-slate-500 hover:bg-white/5 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 sm:px-8 sm:py-4"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-600 px-8 py-4 text-lg font-semibold text-slate-300 transition-all duration-200 hover:border-slate-500 hover:bg-white/5 hover:text-white"
             >
               Poznaj nasze usługi
             </button>
           </div>
 
           {/* Social Proof */}
-          <div className="mt-10 grid max-w-3xl grid-cols-1 gap-3 sm:mt-14 sm:grid-cols-3 sm:gap-4 mx-auto lg:mx-0">
+          <div className="mt-16 grid max-w-[900px] mx-auto grid-cols-1 sm:grid-cols-3 gap-4">
             {SOCIAL_PROOF.map((item) => (
               <div
                 key={item.text}
-                className="flex items-center justify-center gap-2.5 rounded-xl border border-slate-700/50 bg-slate-800/40 px-4 py-3 backdrop-blur-sm sm:gap-3 sm:py-3.5"
+                className="flex items-center justify-center gap-3 rounded-xl border border-slate-700/50 bg-slate-800/40 px-5 py-4 backdrop-blur-sm"
               >
-                <span className="text-lg sm:text-xl">{item.icon}</span>
-                <span className="text-xs font-medium text-slate-300 sm:text-sm">
+                <span className="text-xl">{item.icon}</span>
+                <span className="text-sm font-medium text-slate-300">
                   {item.text}
                 </span>
               </div>
