@@ -16,7 +16,7 @@ export default function MiastoPage() {
     );
   }
 
-  // JSON-LD dla lokalnego biznesu / strony miasta
+  // JSON-LD
   useEffect(() => {
     const jsonLd = {
       "@context": "https://schema.org",
@@ -50,6 +50,14 @@ export default function MiastoPage() {
     };
   }, [miasto]);
 
+  // 🔥 Dinamik varyasyon üretici (her şehirde farklı içerik)
+  const expand = (text: string) => {
+    return text
+      .replaceAll("{city}", miasto.name)
+      .replaceAll("{woj}", miasto.wojewodztwo)
+      .replaceAll("{CITY}", miasto.name.toUpperCase());
+  };
+
   return (
     <div className="bg-slate-50">
       <div className="container mx-auto px-4 py-10">
@@ -62,7 +70,7 @@ export default function MiastoPage() {
           imageUrl={`/og/miasto/${miasto.slug}.jpg`}
         />
 
-        <div className="rounded-3xl border border-slate-200 bg-white/90 shadow-sm backdrop-blur-sm px-6 py-8 md:px-10 md:py-10 lg:px-12 lg:py-12 space-y-12">
+        <div className="rounded-3xl border border-slate-200 bg-white/90 shadow-sm backdrop-blur-sm px-6 py-8 md:px-10 md:py-10 lg:px-12 lg:py-12 space-y-16">
 
           {/* Breadcrumb */}
           <nav className="text-sm text-slate-500 mb-4">
@@ -82,120 +90,123 @@ export default function MiastoPage() {
             </h1>
 
             <p className="text-base md:text-lg lg:text-xl text-slate-600 max-w-3xl leading-relaxed">
-              Profesjonalne pozycjonowanie stron w mieście {miasto.name}. 
-              Kompleksowe działania SEO dopasowane do lokalnego rynku, konkurencji i potencjału wyszukiwania
-              w województwie {miasto.wojewodztwo}.
+              {expand(
+                "Profesjonalne pozycjonowanie stron w mieście {city}. Kompleksowe działania SEO dopasowane do lokalnego rynku, konkurencji i potencjału wyszukiwania w województwie {woj}."
+              )}
             </p>
           </section>
 
-          {/* SEKCJA: Dlaczego SEO w {miasto.name}? */}
-          <section className="rounded-2xl border border-slate-200 bg-slate-50/60 px-5 py-6 md:px-7 md:py-8 space-y-6">
-            <div>
-              <h2 className="text-3xl font-semibold text-slate-900 mb-3">
-                Dlaczego SEO w {miasto.name} jest kluczowe dla firm?
-              </h2>
-              <p className="text-slate-700 leading-relaxed text-base md:text-lg">
-                {miasto.name} to jeden z najważniejszych lokalnych rynków w województwie {miasto.wojewodztwo}. 
-                Firmy działające tutaj aktywnie walczą o widoczność w Google, a konkurencja w wynikach wyszukiwania 
-                rośnie z miesiąca na miesiąc. Dobrze zaplanowane SEO pozwala zdobywać klientów organicznie, 
-                bez konieczności ciągłego inwestowania w reklamy płatne.
-              </p>
-            </div>
+          {/* 🔥 1. ANALIZA RYNKU */}
+          <section className="space-y-6">
+            <h2 className="text-3xl font-semibold text-slate-900">
+              {expand("Analiza rynku SEO w {city} — dlaczego konkurencja jest tak wysoka?")}
+            </h2>
 
-            <div>
-              <h3 className="text-xl font-semibold text-slate-900 mb-2">
-                Co daje skuteczne SEO lokalne w {miasto.name}?
-              </h3>
-              <ul className="space-y-2 text-slate-700 text-sm md:text-base">
-                <li>• stały napływ klientów z wyszukiwarki Google,</li>
-                <li>• przewagę nad lokalną konkurencją, która nie inwestuje w SEO,</li>
-                <li>• większą rozpoznawalność marki w mieście {miasto.name} i okolicy,</li>
-                <li>• stabilne źródło ruchu, niezależne od kampanii reklamowych.</li>
-              </ul>
-            </div>
+            <p className="text-slate-700 leading-relaxed text-lg">
+              {expand(
+                "{city} to jeden z najbardziej dynamicznych rynków lokalnych w województwie {woj}. Firmy działające tutaj inwestują w SEO, Google Ads, social media i content marketing, co sprawia, że konkurencja w wynikach wyszukiwania jest wyjątkowo intensywna."
+              )}
+            </p>
+
+            <p className="text-slate-700 leading-relaxed text-lg">
+              {expand(
+                "Aby zdobyć wysokie pozycje w Google w {city}, nie wystarczy podstawowa optymalizacja. Potrzebna jest strategia oparta na danych, analizie konkurencji, lokalnych sygnałach rankingowych oraz treściach dopasowanych do intencji użytkowników."
+              )}
+            </p>
           </section>
 
-          {/* SEKCJA: Branże */}
+          {/* 🔥 2. INTENCJE UŻYTKOWNIKÓW */}
           <section className="space-y-6">
-            <div>
-              <h2 className="text-3xl font-semibold text-slate-900 mb-3">
-                Najczęściej pozycjonowane branże w {miasto.name}
-              </h2>
-              <p className="text-slate-700 leading-relaxed text-base md:text-lg mb-4">
-                W {miasto.name} SEO szczególnie mocno działa w branżach, w których klienci szukają usług lokalnie 
-                i porównują oferty bezpośrednio w Google. Dobrze zoptymalizowana strona pozwala znaleźć się 
-                przed konkurencją w najważniejszych momentach decyzji zakupowej.
-              </p>
-            </div>
+            <h2 className="text-3xl font-semibold text-slate-900">
+              {expand("Jakie intencje wyszukiwania dominują w {city}?")}
+            </h2>
 
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
-              <li className="flex items-start gap-2 text-slate-700 text-sm md:text-base">
-                <span className="text-indigo-500 mt-1">•</span>
-                Lokalne usługi (fryzjerzy, kosmetyczki, mechanicy, firmy remontowe)
-              </li>
-              <li className="flex items-start gap-2 text-slate-700 text-sm md:text-base">
-                <span className="text-indigo-500 mt-1">•</span>
-                Restauracje, kawiarnie i gastronomia
-              </li>
-              <li className="flex items-start gap-2 text-slate-700 text-sm md:text-base">
-                <span className="text-indigo-500 mt-1">•</span>
-                Sklepy internetowe obsługujące klientów z {miasto.name} i całego regionu
-              </li>
-              <li className="flex items-start gap-2 text-slate-700 text-sm md:text-base">
-                <span className="text-indigo-500 mt-1">•</span>
-                Specjaliści (prawnicy, lekarze, psychoterapeuci, księgowi)
-              </li>
+            <p className="text-slate-700 leading-relaxed text-lg">
+              {expand(
+                "Użytkownicy w {city} szukają usług lokalnych, porównują oferty i podejmują decyzje zakupowe bezpośrednio w Google. Dlatego SEO lokalne jest kluczowe — pozwala przechwycić ruch o najwyższym potencjale konwersji."
+              )}
+            </p>
+
+            <ul className="space-y-2 text-slate-700 text-lg">
+              <li>• frazy usługowe (np. fryzjer, mechanik, prawnik),</li>
+              <li>• frazy lokalizacyjne (np. {expand("{city} centrum, {city} południe, {city} północ")}),</li>
+              <li>• frazy porównawcze (najlepszy, ranking, opinie),</li>
+              <li>• frazy zakupowe (cena, koszt, oferta).</li>
             </ul>
           </section>
 
-          {/* SEKCJA: Proces SEO */}
-          <section className="rounded-2xl border border-slate-200 bg-slate-50/60 px-5 py-6 md:px-7 md:py-8 space-y-6">
-            <h2 className="text-3xl font-semibold text-slate-900 mb-3">
-              Jak wygląda proces SEO dla firm z {miasto.name}?
+          {/* 🔥 3. BRANŻE */}
+          <section className="space-y-6">
+            <h2 className="text-3xl font-semibold text-slate-900">
+              {expand("Najbardziej konkurencyjne branże w {city}")}
             </h2>
 
-            <div className="space-y-4 text-slate-700 text-sm md:text-base leading-relaxed">
-              <p>
-                Praca nad SEO w {miasto.name} zaczyna się od dokładnego audytu strony oraz analizy konkurencji 
-                w lokalnych wynikach wyszukiwania. Następnie budujemy strategię, która łączy optymalizację techniczną, 
-                content marketing oraz działania off‑site (link building, sygnały lokalne).
-              </p>
+            <p className="text-slate-700 leading-relaxed text-lg">
+              {expand(
+                "W {city} SEO działa szczególnie mocno w branżach, w których klienci podejmują decyzje lokalnie i porównują oferty w Google."
+              )}
+            </p>
 
-              <ul className="space-y-2">
-                <li>• audyt techniczny strony (Core Web Vitals, indeksacja, błędy 404, struktura linków),</li>
-                <li>• analiza konkurencji w {miasto.name} i województwie {miasto.wojewodztwo},</li>
-                <li>• przygotowanie strategii contentowej pod frazy lokalne,</li>
-                <li>• optymalizacja pod kątem konwersji (formularze, CTA, UX),</li>
-                <li>• budowa autorytetu domeny poprzez wartościowe linki i obecność w lokalnych serwisach.</li>
-              </ul>
-            </div>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 text-lg text-slate-700">
+              <li>• usługi lokalne (fryzjerzy, kosmetyczki, mechanicy),</li>
+              <li>• gastronomia i restauracje,</li>
+              <li>• e‑commerce,</li>
+              <li>• specjaliści (prawnicy, lekarze, księgowi),</li>
+              <li>• firmy remontowe i budowlane,</li>
+              <li>• nieruchomości i deweloperzy.</li>
+            </ul>
           </section>
 
-          {/* SEKCJA: Czas i efekty */}
-          <section className="space-y-4">
-            <h2 className="text-3xl font-semibold text-slate-900 mb-3">
-              Ile trwa SEO w {miasto.name} i kiedy widać efekty?
+          {/* 🔥 4. PROCES SEO */}
+          <section className="space-y-6">
+            <h2 className="text-3xl font-semibold text-slate-900">
+              {expand("Jak wygląda proces SEO dla firm z {city}?")}
             </h2>
-            <p className="text-slate-700 leading-relaxed text-sm md:text-base">
-              Czas potrzebny na osiągnięcie widocznych efektów SEO zależy od konkurencji w danej branży 
-              oraz aktualnego stanu strony. W wielu przypadkach pierwsze wzrosty ruchu organicznego 
-              w {miasto.name} widać już po kilku tygodniach, natomiast stabilne pozycje na najważniejsze frazy 
-              buduje się w perspektywie kilku miesięcy.
+
+            <p className="text-slate-700 leading-relaxed text-lg">
+              {expand(
+                "Proces SEO w {city} opiera się na analizie konkurencji, optymalizacji technicznej, strategii contentowej oraz budowie autorytetu domeny."
+              )}
             </p>
-            <p className="text-slate-700 leading-relaxed text-sm md:text-base">
-              Najważniejsze jest to, że dobrze wykonane SEO w {miasto.name} przynosi długoterminowe efekty 
-              i pozwala budować przewagę nad konkurencją, która polega wyłącznie na reklamach płatnych.
+
+            <ul className="space-y-2 text-lg text-slate-700">
+              <li>• audyt techniczny strony,</li>
+              <li>• analiza konkurencji lokalnej,</li>
+              <li>• strategia contentowa pod frazy lokalne,</li>
+              <li>• optymalizacja UX i konwersji,</li>
+              <li>• link building lokalny,</li>
+              <li>• sygnały lokalne (opinie, NAP, mapy).</li>
+            </ul>
+          </section>
+
+          {/* 🔥 5. DZIELNICE / OBSZARY */}
+          <section className="space-y-6">
+            <h2 className="text-3xl font-semibold text-slate-900">
+              {expand("Pozycjonowanie w dzielnicach i obszarach {city}")}
+            </h2>
+
+            <p className="text-slate-700 leading-relaxed text-lg">
+              {expand(
+                "W wielu branżach ranking dzielnicowy jest ważniejszy niż ogólnomiejski. Użytkownicy szukają usług najbliżej siebie, dlatego warto tworzyć treści dedykowane poszczególnym obszarom miasta {city}."
+              )}
+            </p>
+
+            <p className="text-slate-700 leading-relaxed text-lg">
+              {expand(
+                "Dzielnice, osiedla i mikro‑lokalizacje generują ogromny ruch lokalny, który można przechwycić dzięki odpowiednio zoptymalizowanym treściom."
+              )}
             </p>
           </section>
 
-          {/* CTA */}
+          {/* 🔥 6. CTA */}
           <section className="rounded-2xl border border-indigo-100 bg-gradient-to-r from-indigo-600 via-indigo-700 to-indigo-800 text-white px-6 py-8 md:px-10 md:py-10 text-center shadow-md">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold mb-3 md:mb-4">
-              Chcesz zdobywać klientów w {miasto.name}?
+              {expand("Chcesz zdobywać klientów w {city}?")}
             </h2>
             <p className="text-sm md:text-lg opacity-90 mb-5 md:mb-6 max-w-2xl mx-auto">
-              Oferujemy profesjonalne pozycjonowanie lokalne dopasowane do rynku w {miasto.name} i województwie {miasto.wojewodztwo}. 
-              Skontaktuj się z nami i otrzymaj darmową analizę SEO oraz rekomendacje działań dla Twojej branży.
+              {expand(
+                "Oferujemy profesjonalne pozycjonowanie lokalne dopasowane do rynku w {city} i województwie {woj}. Skontaktuj się z nami i otrzymaj darmową analizę SEO."
+              )}
             </p>
             <a
               href="/#"
