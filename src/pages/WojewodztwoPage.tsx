@@ -121,7 +121,6 @@ export default function WojewodztwoPage() {
       if (cleanup) cleanup.remove();
     };
   }, [woj, powiaty, breadcrumb]);
-}, [slug]);
   return (
     <div className="bg-slate-50">
       <div className="container mx-auto px-4 py-10">
