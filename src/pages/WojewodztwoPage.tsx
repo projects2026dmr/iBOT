@@ -4,6 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import SEOHead from "@/components/SEOHead";
 import Breadcrumb from "@/components/Breadcrumb";
 import { getPremiumWojContent } from "@/data/premiumWojContent";
+import { getMiastaByWoj } from "@/data/miastaService";
 import {
   getWojewodztwoBySlug,
   getPowiatyByWojewodztwo,
@@ -37,6 +38,7 @@ export default function WojewodztwoPage() {
   const premium = getPremiumWojContent(woj.slug, woj.name);
   const faq = getWojFaqContent(woj.name);
   const powiaty = getPowiatyByWojewodztwo(woj.slug);
+  const miasta = getMiastaByWoj(woj.slug);
   const breadcrumb = getWojBreadcrumb(woj);
 
   // JSON-LD
@@ -228,6 +230,24 @@ export default function WojewodztwoPage() {
 
             </div>
           </section>
+        {/* ⭐ MIASTA LIST */}
+        <section className="space-y-4">
+          <h2 className="text-2xl md:text-3xl font-semibold text-slate-900">
+            Największe miasta w województwie {woj.name}
+          </h2>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3 md:gap-4 mb-4">
+          {miasta.map((m) => (
+      <Link
+        key={m.slug}
+        to={`/miasto/${m.slug}`}
+        className="block rounded-xl border border-slate-200 bg-white px-5 py-4 text-sm md:text-base font-medium text-slate-700 hover:border-emerald-500 hover:bg-emerald-50 hover:text-emerald-700 hover:shadow-sm transition-all"
+      >
+        {m.name}
+      </Link>
+    ))}
+  </div>
+</section>
 
           {/* ⭐ POWIAT LIST */}
           <section className="space-y-4">
